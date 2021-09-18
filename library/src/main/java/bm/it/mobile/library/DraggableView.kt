@@ -36,14 +36,19 @@ class DraggableView(private val callback: OnViewSelection) : View.OnTouchListene
 
     fun setDraggableView(view: View) {
         viewsArrayList.add(view)
-        for (i in viewsArrayList.indices) {
-            viewsArrayList[i].setOnTouchListener(this)
+        viewsArrayList.forEach{
+            it.setOnTouchListener(this)
         }
     }
 
     fun reset() {
         dragSuccess = false
-        viewsArrayList = ArrayList<View>()
+//        viewsArrayList = ArrayList<View>()
+
+        destViewGroups.forEach {
+            val container = it as LinearLayoutCompat
+            container.removeAllViews()
+        }
     }
 
     private fun setEvents() {
