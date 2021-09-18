@@ -1,5 +1,6 @@
 package bm.it.mobile.library
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.view.DragEvent
 import android.view.MotionEvent
@@ -11,8 +12,8 @@ import java.util.*
 
 class DraggableView(context: Context) : View.OnTouchListener, View.OnDragListener {
 
-    private var viewsArrayList: ArrayList<View> = ArrayList<View>()
-    private var viewSelection: OnViewSelection = context as OnViewSelection
+    private val viewsArrayList: ArrayList<View> = ArrayList<View>()
+    private val viewSelection: OnViewSelection = context as OnViewSelection
 
     private lateinit var destViewGroups: MutableList<ViewGroup>
 
@@ -89,6 +90,7 @@ class DraggableView(context: Context) : View.OnTouchListener, View.OnDragListene
         }
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     override fun onTouch(view: View, motionEvent: MotionEvent): Boolean {
         return if (motionEvent.action == MotionEvent.ACTION_DOWN) {
             val shadowBuilder = DragShadowBuilder(view)
