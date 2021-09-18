@@ -29,7 +29,5 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"
     implementation "androidx.appcompat:appcompat:$appCompactVersion"
 
-
     implementation (project(':library'))
-
 }
