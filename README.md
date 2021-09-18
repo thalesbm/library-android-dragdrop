@@ -14,7 +14,7 @@ allprojects {
 ###### Step 2. Add the dependency
 ```
 dependencies {
-    implementation 'com.github.thalesbm:library-android-dragdrop:1.0.5'
+    implementation 'com.github.thalesbm:library-android-dragdrop:1.0.6'
 }
 ```
 #### How to use?

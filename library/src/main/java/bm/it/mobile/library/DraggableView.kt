@@ -70,9 +70,9 @@ class DraggableView(private val callback: OnViewSelection) : View.OnTouchListene
     }
 
     private fun actionDragEnded(view: View) {
-        if (!dragSuccess) {
+//        if (!dragSuccess) {
             view.visibility = View.VISIBLE
-        }
+//        }
     }
 
     private fun actionDrop(view: View, layoutView: View) {
