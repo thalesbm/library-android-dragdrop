@@ -16,9 +16,9 @@ class DraggableView(private val callback: OnViewSelection) : View.OnTouchListene
 
     private lateinit var destViewGroups: MutableList<View>
 
-    fun setDestViewGroup(viewGroup: View) {
+    fun setDestViewGroup(view: View) {
         this.destViewGroups = mutableListOf()
-        this.destViewGroups.add(viewGroup)
+        this.destViewGroups.add(view)
         setEvents()
     }
 

@@ -49,13 +49,13 @@ class MainActivity : AppCompatActivity(), OnViewSelection {
     override fun viewSelectedPosition(position: Int): Int {
         when (position) {
             0 -> {
-                Toast.makeText(this, "Login with Facebook", Toast.LENGTH_SHORT).show()
+//                Toast.makeText(this, "Login with Facebook", Toast.LENGTH_SHORT).show()
             }
             1 -> {
-                Toast.makeText(this, "Login with Google", Toast.LENGTH_SHORT).show()
+//                Toast.makeText(this, "Login with Google", Toast.LENGTH_SHORT).show()
             }
             2 -> {
-                Toast.makeText(this, "Login with LinkedIn", Toast.LENGTH_SHORT).show()
+//                Toast.makeText(this, "Login with LinkedIn", Toast.LENGTH_SHORT).show()
             }
         }
         return position
