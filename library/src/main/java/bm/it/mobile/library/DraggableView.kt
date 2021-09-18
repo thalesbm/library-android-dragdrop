@@ -1,6 +1,7 @@
 package bm.it.mobile.library
 
 import android.annotation.SuppressLint
+import android.content.ComponentCallbacks
 import android.content.Context
 import android.view.DragEvent
 import android.view.MotionEvent
@@ -10,10 +11,9 @@ import android.view.ViewGroup
 import android.widget.RelativeLayout
 import java.util.*
 
-class DraggableView(context: Context) : View.OnTouchListener, View.OnDragListener {
+class DraggableView(private val callback: OnViewSelection) : View.OnTouchListener, View.OnDragListener {
 
     private val viewsArrayList: ArrayList<View> = ArrayList<View>()
-    private val viewSelection: OnViewSelection = context as OnViewSelection
 
     private lateinit var destViewGroups: MutableList<ViewGroup>
 
@@ -84,7 +84,7 @@ class DraggableView(context: Context) : View.OnTouchListener, View.OnDragListene
         var i = 0
         while (i < viewsArrayList.size) {
             if (view.id == viewsArrayList[i].id) {
-                viewSelection.viewSelectedPosition(i)
+                callback.viewSelectedPosition(i)
             }
             i++
         }
