@@ -7,7 +7,7 @@ import android.view.View
 import android.view.View.DragShadowBuilder
 import android.view.ViewGroup
 import android.widget.RelativeLayout
-import androidx.appcompat.widget.AppCompatTextView
+import androidx.appcompat.widget.LinearLayoutCompat
 import java.util.*
 
 class DraggableView(private val callback: OnViewSelection) : View.OnTouchListener, View.OnDragListener {
@@ -69,10 +69,8 @@ class DraggableView(private val callback: OnViewSelection) : View.OnTouchListene
     private fun actionDrop(view: View, layoutView: View) {
         val owner = view.parent as ViewGroup
         owner.removeView(view)
-
-        val container = getContainerType(layoutView)
-
-        (container as ViewGroup).addView(view)
+        val container = layoutView as LinearLayoutCompat
+        container.addView(view)
         view.visibility = View.VISIBLE
 
         destViewGroups.forEach {
@@ -100,20 +98,6 @@ class DraggableView(private val callback: OnViewSelection) : View.OnTouchListene
             true
         } else {
             false
-        }
-    }
-
-    private fun getContainerType(layoutView: View): Any {
-        return when (layoutView) {
-            is RelativeLayout -> {
-                layoutView
-            }
-            is AppCompatTextView -> {
-                layoutView
-            }
-            else -> {
-                layoutView
-            }
         }
     }
 
