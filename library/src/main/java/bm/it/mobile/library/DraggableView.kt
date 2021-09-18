@@ -9,65 +9,84 @@ import android.view.ViewGroup
 import android.widget.RelativeLayout
 import java.util.*
 
-class DraggableView(
-    private val context: Context,
-    private val destiViewGroup: ViewGroup
-) : View.OnTouchListener, View.OnDragListener {
+class DraggableView(context: Context) : View.OnTouchListener, View.OnDragListener {
 
-    private var viewsArrayList = ArrayList<View>()
-    private var viewSelection: OnViewSelection? = null
+    private var viewsArrayList: ArrayList<View> = ArrayList<View>()
+    private var viewSelection: OnViewSelection = context as OnViewSelection
 
-    init {
-        this.viewSelection = context as OnViewSelection
-        destiViewGroup.setOnDragListener(this)
+    private lateinit var destViewGroups: MutableList<ViewGroup>
+
+    fun setDestViewGroup(viewGroup: ViewGroup) {
+        this.destViewGroups = mutableListOf()
+        this.destViewGroups.add(viewGroup)
+        setEvents()
     }
 
-    fun addView(view: View) {
+    fun setDestViewGroup(viewGroup: MutableList<ViewGroup>) {
+        this.destViewGroups = viewGroup
+        setEvents()
+    }
+
+    private fun setEvents() {
+        destViewGroups.forEach {
+            it.setOnDragListener(this)
+        }
+    }
+
+    fun addViews(views: List<View>) {
+        views.forEach {
+            addView(it)
+        }
+    }
+
+    private fun addView(view: View) {
         viewsArrayList.add(view)
         for (i in viewsArrayList.indices) {
             viewsArrayList[i].setOnTouchListener(this)
         }
     }
 
-    override fun onDrag(layoutview: View, dragevent: DragEvent): Boolean {
-        val action = dragevent.action
-        val view = dragevent.localState as View
+    override fun onDrag(layoutView: View, dragEvent: DragEvent): Boolean {
+        val action = dragEvent.action
+        val view = dragEvent.localState as View
         when (action) {
-            DragEvent.ACTION_DRAG_STARTED -> {
-            }
-            DragEvent.ACTION_DRAG_ENTERED -> {
-            }
-            DragEvent.ACTION_DRAG_EXITED -> {
-            }
             DragEvent.ACTION_DROP -> {
-                val owner = view.parent as ViewGroup
-                owner.removeView(view)
-                val container = layoutview as RelativeLayout
-                container.addView(view)
-                view.visibility = View.VISIBLE
-                if (container.id == destiViewGroup!!.id) {
-                    view.setOnTouchListener(null)
-                    owner.setOnDragListener(null)
-                }
-                var i = 0
-                while (i < viewsArrayList.size) {
-                    if (view.id == viewsArrayList[i].id) {
-                        viewSelection!!.viewSelectedPosition(i)
-                    }
-                    i++
-                }
+                actionDrop(view, layoutView)
             }
-            DragEvent.ACTION_DRAG_ENDED -> if (dropEventNotHandled(dragevent)) {
-                view.visibility = View.VISIBLE
-            }
-            else -> {
+            DragEvent.ACTION_DRAG_ENDED -> {
+                actionDragEnded(view, dragEvent)
             }
         }
         return true
     }
 
-    private fun dropEventNotHandled(dragEvent: DragEvent): Boolean {
-        return !dragEvent.result
+    private fun actionDragEnded(view: View, dragEvent: DragEvent) {
+        if (dropEventNotHandled(dragEvent)) {
+            view.visibility = View.VISIBLE
+        }
+    }
+
+    private fun actionDrop(view: View, layoutView: View) {
+        val owner = view.parent as ViewGroup
+        owner.removeView(view)
+        val container = layoutView as RelativeLayout
+        container.addView(view)
+        view.visibility = View.VISIBLE
+
+        destViewGroups.forEach {
+            if (container.id == it.id) {
+                view.setOnTouchListener(null)
+                owner.setOnDragListener(null)
+            }
+        }
+
+        var i = 0
+        while (i < viewsArrayList.size) {
+            if (view.id == viewsArrayList[i].id) {
+                viewSelection.viewSelectedPosition(i)
+            }
+            i++
+        }
     }
 
     override fun onTouch(view: View, motionEvent: MotionEvent): Boolean {
@@ -79,5 +98,9 @@ class DraggableView(
         } else {
             false
         }
+    }
+
+    private fun dropEventNotHandled(dragEvent: DragEvent): Boolean {
+        return !dragEvent.result
     }
 }

@@ -1,6 +1,8 @@
 package bm.it.mobile.app
 
 import android.os.Bundle
+import android.view.View
+import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.RelativeLayout
 import android.widget.Toast
@@ -14,29 +16,35 @@ class MainActivity : AppCompatActivity(), OnViewSelection {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val imgFacebook: ImageView = findViewById(R.id.imgFacebook)
-        val imgGoogle: ImageView = findViewById(R.id.imgGoogle)
-        val imgLinkedIn: ImageView = findViewById(R.id.imgLinkedIn)
+        val draggableViewMain = DraggableView(this)
+        draggableViewMain.setDestViewGroup(getDestinations())
+        draggableViewMain.addViews(getViews())
+    }
 
+    private fun getDestinations(): MutableList<ViewGroup> {
         val rlDestination: RelativeLayout = findViewById(R.id.rlDestination)
         val rlDestination1: RelativeLayout = findViewById(R.id.rlDestination1)
         val rlDestination2: RelativeLayout = findViewById(R.id.rlDestination2)
 
-        val draggableViewMain = DraggableView(this, rlDestination)
-        val draggableViewMain1 = DraggableView(this, rlDestination1)
-        val draggableViewMain2 = DraggableView(this, rlDestination2)
+        val destinations = mutableListOf<ViewGroup>()
+        destinations.add(rlDestination)
+        destinations.add(rlDestination1)
+        destinations.add(rlDestination2)
 
-        draggableViewMain.addView(imgFacebook)
-        draggableViewMain.addView(imgGoogle)
-        draggableViewMain.addView(imgLinkedIn)
+        return destinations
+    }
 
-        draggableViewMain1.addView(imgFacebook)
-        draggableViewMain1.addView(imgGoogle)
-        draggableViewMain1.addView(imgLinkedIn)
+    private fun getViews(): MutableList<View> {
+        val imgFacebook: ImageView = findViewById(R.id.imgFacebook)
+        val imgGoogle: ImageView = findViewById(R.id.imgGoogle)
+        val imgLinkedIn: ImageView = findViewById(R.id.imgLinkedIn)
 
-        draggableViewMain2.addView(imgFacebook)
-        draggableViewMain2.addView(imgGoogle)
-        draggableViewMain2.addView(imgLinkedIn)
+        val views = mutableListOf<View>()
+        views.add(imgFacebook)
+        views.add(imgGoogle)
+        views.add(imgLinkedIn)
+
+        return views
     }
 
     override fun viewSelectedPosition(position: Int): Int {

@@ -5,5 +5,5 @@ ext {
     compileSDKVersion = 30
     kotlinVersion = '1.5.21'
     gradleVersion = '3.6.4'
-    appCompactVersion = '1.1.0'
+    appCompactVersion = '1.3.1'
 }

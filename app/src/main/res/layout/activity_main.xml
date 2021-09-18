@@ -1,43 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.app.dragableview.MainActivity">
+    tools:context=".MainActivity">
 
-    <RelativeLayout
-        android:id="@+id/rlSourceOne"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-
-        <ImageView
-            android:id="@+id/imgFacebook"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_margin="10dp"
-            android:background="@drawable/ic_facebook" />
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:id="@+id/rlSourceTwo"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/rlSourceOne">
-
-        <ImageView
-            android:id="@+id/imgGoogle"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_margin="10dp"
-            android:background="@drawable/ic_gmail" />
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:id="@+id/rlSourceThree"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/rlSourceTwo">
+        android:orientation="horizontal">
 
         <ImageView
             android:id="@+id/imgLinkedIn"
@@ -45,28 +17,46 @@
             android:layout_height="100dp"
             android:layout_margin="10dp"
             android:background="@drawable/ic_linkedin" />
-    </RelativeLayout>
 
-    <RelativeLayout
-        android:id="@+id/rlDestination"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_alignParentLeft="true"
-        android:layout_centerInParent="true"
-        android:background="@color/colorPrimary" />
+        <ImageView
+            android:id="@+id/imgGoogle"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/ic_gmail" />
 
-    <RelativeLayout
-        android:id="@+id/rlDestination1"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_centerInParent="true"
-        android:background="@color/colorPrimary" />
+        <ImageView
+            android:id="@+id/imgFacebook"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/ic_facebook" />
+    </LinearLayout>
 
-    <RelativeLayout
-        android:id="@+id/rlDestination2"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_alignParentRight="true"
-        android:layout_centerInParent="true"
-        android:background="@color/colorPrimary" />
-</RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:id="@+id/rlDestination"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_margin="10dp"
+            android:background="@color/colorPrimary" />
+
+        <RelativeLayout
+            android:id="@+id/rlDestination1"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_margin="10dp"
+            android:background="@color/colorPrimary" />
+
+        <RelativeLayout
+            android:id="@+id/rlDestination2"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_margin="10dp"
+            android:background="@color/colorPrimary" />
+    </LinearLayout>
+</LinearLayout>
