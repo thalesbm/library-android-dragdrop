@@ -2,7 +2,6 @@ package bm.it.mobile.app
 
 import android.os.Bundle
 import android.view.View
-import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.RelativeLayout
 import android.widget.Toast
@@ -21,12 +20,12 @@ class MainActivity : AppCompatActivity(), OnViewSelection {
         draggableViewMain.addViews(getViews())
     }
 
-    private fun getDestinations(): MutableList<ViewGroup> {
+    private fun getDestinations(): MutableList<View> {
         val rlDestination: RelativeLayout = findViewById(R.id.rlDestination)
         val rlDestination1: RelativeLayout = findViewById(R.id.rlDestination1)
         val rlDestination2: RelativeLayout = findViewById(R.id.rlDestination2)
 
-        val destinations = mutableListOf<ViewGroup>()
+        val destinations = mutableListOf<View>()
         destinations.add(rlDestination)
         destinations.add(rlDestination1)
         destinations.add(rlDestination2)

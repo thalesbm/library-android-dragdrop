@@ -1,8 +1,6 @@
 package bm.it.mobile.library
 
 import android.annotation.SuppressLint
-import android.content.ComponentCallbacks
-import android.content.Context
 import android.view.DragEvent
 import android.view.MotionEvent
 import android.view.View
@@ -15,15 +13,15 @@ class DraggableView(private val callback: OnViewSelection) : View.OnTouchListene
 
     private val viewsArrayList: ArrayList<View> = ArrayList<View>()
 
-    private lateinit var destViewGroups: MutableList<ViewGroup>
+    private lateinit var destViewGroups: MutableList<View>
 
-    fun setDestViewGroup(viewGroup: ViewGroup) {
+    fun setDestViewGroup(viewGroup: View) {
         this.destViewGroups = mutableListOf()
         this.destViewGroups.add(viewGroup)
         setEvents()
     }
 
-    fun setDestViewGroup(viewGroup: MutableList<ViewGroup>) {
+    fun setDestViewGroup(viewGroup: MutableList<View>) {
         this.destViewGroups = viewGroup
         setEvents()
     }
