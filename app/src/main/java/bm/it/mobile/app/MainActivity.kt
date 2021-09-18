@@ -3,8 +3,9 @@ package bm.it.mobile.app
 import android.graphics.Color
 import android.os.Bundle
 import android.view.View
-import android.view.ViewGroup
+import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.AppCompatButton
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.appcompat.widget.LinearLayoutCompat
 import bm.it.mobile.library.DraggableView
@@ -12,12 +13,23 @@ import bm.it.mobile.library.OnViewSelection
 
 class MainActivity : AppCompatActivity() {
 
+    private lateinit var draggableViewXML: DraggableView
+    private lateinit var draggableViewCode: DraggableView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         xml()
         code()
+
+        val resetButton: Button = findViewById(R.id.button_reset)
+        resetButton.setOnClickListener(object : View.OnClickListener{
+            override fun onClick(p0: View?) {
+                draggableViewXML.reset()
+                draggableViewCode.reset()
+            }
+        })
     }
 
     private fun xml() {
@@ -38,9 +50,9 @@ class MainActivity : AppCompatActivity() {
         views.add(img2)
         views.add(img3)
 
-        val draggableView = DraggableView(callback)
-        draggableView.setDestViewGroup(destinations)
-        draggableView.addViews(views)
+        draggableViewXML = DraggableView(callback)
+        draggableViewXML.setDestView(destinations)
+        draggableViewXML.setDraggableView(views)
     }
 
     private fun code() {
@@ -70,9 +82,9 @@ class MainActivity : AppCompatActivity() {
             destinations.add(image)
         }
 
-        val draggableView = DraggableView(callback)
-        draggableView.setDestViewGroup(destinations)
-        draggableView.addViews(views)
+        draggableViewCode = DraggableView(callback)
+        draggableViewCode.setDestView(destinations)
+        draggableViewCode.setDraggableView(views)
     }
 
     private val callback = object : OnViewSelection {

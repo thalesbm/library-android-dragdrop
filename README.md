@@ -14,7 +14,7 @@ allprojects {
 ###### Step 2. Add the dependency
 ```
 dependencies {
-    implementation 'com.github.thalesbm:library-android-dragdrop:1.0.0'
+    implementation 'com.github.thalesbm:library-android-dragdrop:1.0.5'
 }
 ```
 #### How to use?
@@ -31,4 +31,19 @@ private val callback = object : OnViewSelection {
 ###### Step 2. Instance the object DraggableView
 ```
 val draggableView = DraggableView(callback)
+```
+
+###### Step 3. Set the destinations views
+```
+draggableView.setDestView(...)
+```
+
+###### Step 4. Set the draggable views
+```
+draggableView.setDraggableView(...)
+```
+
+###### Useful Methods
+```
+draggableView.reset()
 ```

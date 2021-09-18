@@ -9,39 +9,46 @@ import android.view.ViewGroup
 import androidx.appcompat.widget.LinearLayoutCompat
 import java.util.*
 
-class DraggableView(private val callback: OnViewSelection) : View.OnTouchListener, View.OnDragListener {
-
-    private val viewsArrayList: ArrayList<View> = ArrayList<View>()
+class DraggableView(private val callback: OnViewSelection) : View.OnTouchListener,
+    View.OnDragListener {
 
     private lateinit var destViewGroups: MutableList<View>
 
-    fun setDestViewGroup(view: View) {
+    private var viewsArrayList = ArrayList<View>()
+    private var dragSuccess = false
+
+    fun setDestView(view: View) {
         this.destViewGroups = mutableListOf()
         this.destViewGroups.add(view)
         setEvents()
     }
 
-    fun setDestViewGroup(viewGroup: MutableList<View>) {
+    fun setDestView(viewGroup: MutableList<View>) {
         this.destViewGroups = viewGroup
         setEvents()
+    }
+
+    fun setDraggableView(views: MutableList<View>) {
+        views.forEach {
+            setDraggableView(it)
+        }
+    }
+
+    fun setDraggableView(view: View) {
+        viewsArrayList.add(view)
+        for (i in viewsArrayList.indices) {
+            viewsArrayList[i].setOnTouchListener(this)
+        }
+    }
+
+    fun reset() {
+        dragSuccess = false
+        viewsArrayList = ArrayList<View>()
     }
 
     private fun setEvents() {
         destViewGroups.forEach {
             it.setOnDragListener(this)
-        }
-    }
-
-    fun addViews(views: List<View>) {
-        views.forEach {
-            addView(it)
-        }
-    }
-
-    private fun addView(view: View) {
-        viewsArrayList.add(view)
-        for (i in viewsArrayList.indices) {
-            viewsArrayList[i].setOnTouchListener(this)
         }
     }
 
@@ -53,40 +60,47 @@ class DraggableView(private val callback: OnViewSelection) : View.OnTouchListene
                 actionDrop(view, layoutView)
             }
             DragEvent.ACTION_DRAG_ENDED -> {
-                actionDragEnded(view, dragEvent)
+                 actionDragEnded(view)
             }
         }
         return true
     }
 
-    private fun actionDragEnded(view: View, dragEvent: DragEvent) {
-        if (dropEventNotHandled(dragEvent)) {
+    private fun actionDragEnded(view: View) {
+        if (!dragSuccess) {
             view.visibility = View.VISIBLE
         }
     }
 
     private fun actionDrop(view: View, layoutView: View) {
-        val owner = view.parent as ViewGroup
-        owner.removeView(view)
-        val container = layoutView as LinearLayoutCompat
-        container.addView(view)
-        view.visibility = View.VISIBLE
+        dragSuccess = false
 
+        val container = layoutView as LinearLayoutCompat
         destViewGroups.forEach {
-            if (container.id == it.id) {
+            if (container.id == it.id && (it as LinearLayoutCompat).childCount == 0) {
+                val owner = view.parent as ViewGroup
+                owner.removeView(view)
+
+                container.addView(view)
+
+                view.visibility = View.VISIBLE
+
                 view.setOnTouchListener(null)
                 owner.setOnDragListener(null)
-            }
-        }
 
-        var i = 0
-        while (i < viewsArrayList.size) {
-            if (view.id == viewsArrayList[i].id) {
-                callback.viewSelectedPosition(i)
+                dragSuccess = true
             }
-            i++
         }
     }
+
+//        var i = 0
+//        while (i < viewsArrayList.size) {
+//            if (view.id == viewsArrayList[i].id) {
+//                callback.viewSelectedPosition(i)
+//            }
+//            i++
+//        }
+//    }
 
     @SuppressLint("ClickableViewAccessibility")
     override fun onTouch(view: View, motionEvent: MotionEvent): Boolean {
@@ -98,9 +112,5 @@ class DraggableView(private val callback: OnViewSelection) : View.OnTouchListene
         } else {
             false
         }
-    }
-
-    private fun dropEventNotHandled(dragEvent: DragEvent): Boolean {
-        return !dragEvent.result
     }
 }
