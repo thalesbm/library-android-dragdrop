@@ -21,21 +21,21 @@
         android:orientation="horizontal">
 
         <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/imgLinkedIn"
+            android:id="@+id/img1"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_margin="10dp"
             android:background="@android:drawable/ic_delete" />
 
         <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/imgGoogle"
+            android:id="@+id/img2"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_margin="10dp"
             android:background="@android:drawable/ic_input_add" />
 
         <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/imgFacebook"
+            android:id="@+id/img3"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_margin="10dp"
@@ -49,13 +49,6 @@
         android:orientation="horizontal">
 
         <androidx.appcompat.widget.LinearLayoutCompat
-            android:id="@+id/destination"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_margin="10dp"
-            android:background="@color/colorPrimary" />
-
-        <androidx.appcompat.widget.LinearLayoutCompat
             android:id="@+id/destination1"
             android:layout_width="100dp"
             android:layout_height="100dp"
@@ -64,6 +57,13 @@
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:id="@+id/destination2"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_margin="10dp"
+            android:background="@color/colorPrimary" />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/destination3"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_margin="10dp"

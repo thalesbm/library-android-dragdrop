@@ -10,7 +10,7 @@ import androidx.appcompat.widget.LinearLayoutCompat
 import bm.it.mobile.library.DraggableView
 import bm.it.mobile.library.OnViewSelection
 
-class MainActivity : AppCompatActivity(), OnViewSelection {
+class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,12 +21,12 @@ class MainActivity : AppCompatActivity(), OnViewSelection {
     }
 
     private fun xml() {
-        val destination1: LinearLayoutCompat = findViewById(R.id.destination)
-        val destination2: LinearLayoutCompat = findViewById(R.id.destination1)
-        val destination3: LinearLayoutCompat = findViewById(R.id.destination2)
-        val img1: AppCompatImageView = findViewById(R.id.imgFacebook)
-        val img2: AppCompatImageView = findViewById(R.id.imgGoogle)
-        val img3: AppCompatImageView = findViewById(R.id.imgLinkedIn)
+        val destination1: LinearLayoutCompat = findViewById(R.id.destination1)
+        val destination2: LinearLayoutCompat = findViewById(R.id.destination2)
+        val destination3: LinearLayoutCompat = findViewById(R.id.destination3)
+        val img1: AppCompatImageView = findViewById(R.id.img1)
+        val img2: AppCompatImageView = findViewById(R.id.img2)
+        val img3: AppCompatImageView = findViewById(R.id.img3)
 
         val destinations = mutableListOf<View>()
         destinations.add(destination1)
@@ -38,7 +38,7 @@ class MainActivity : AppCompatActivity(), OnViewSelection {
         views.add(img2)
         views.add(img3)
 
-        val draggableView = DraggableView(this)
+        val draggableView = DraggableView(callback)
         draggableView.setDestViewGroup(destinations)
         draggableView.addViews(views)
     }
@@ -70,12 +70,14 @@ class MainActivity : AppCompatActivity(), OnViewSelection {
             destinations.add(image)
         }
 
-        val draggableView = DraggableView(this)
+        val draggableView = DraggableView(callback)
         draggableView.setDestViewGroup(destinations)
         draggableView.addViews(views)
     }
 
-    override fun viewSelectedPosition(position: Int): Int {
-        return position
+    private val callback = object : OnViewSelection {
+        override fun viewSelectedPosition(position: Int): Int {
+            return position
+        }
     }
 }
