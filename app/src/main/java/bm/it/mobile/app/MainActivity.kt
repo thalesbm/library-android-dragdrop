@@ -1,13 +1,56 @@
 package bm.it.mobile.app
 
 import android.os.Bundle
+import android.widget.ImageView
+import android.widget.RelativeLayout
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import bm.it.mobile.app.R
+import bm.it.mobile.library.DraggableView
+import bm.it.mobile.library.OnViewSelection
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), OnViewSelection {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        val imgFacebook: ImageView = findViewById(R.id.imgFacebook)
+        val imgGoogle: ImageView = findViewById(R.id.imgGoogle)
+        val imgLinkedIn: ImageView = findViewById(R.id.imgLinkedIn)
+
+        val rlDestination: RelativeLayout = findViewById(R.id.rlDestination)
+        val rlDestination1: RelativeLayout = findViewById(R.id.rlDestination1)
+        val rlDestination2: RelativeLayout = findViewById(R.id.rlDestination2)
+
+        val draggableViewMain = DraggableView(this, rlDestination)
+        val draggableViewMain1 = DraggableView(this, rlDestination1)
+        val draggableViewMain2 = DraggableView(this, rlDestination2)
+
+        draggableViewMain.addView(imgFacebook)
+        draggableViewMain.addView(imgGoogle)
+        draggableViewMain.addView(imgLinkedIn)
+
+        draggableViewMain1.addView(imgFacebook)
+        draggableViewMain1.addView(imgGoogle)
+        draggableViewMain1.addView(imgLinkedIn)
+
+        draggableViewMain2.addView(imgFacebook)
+        draggableViewMain2.addView(imgGoogle)
+        draggableViewMain2.addView(imgLinkedIn)
+    }
+
+    override fun viewSelectedPosition(position: Int): Int {
+        when (position) {
+            0 -> {
+                Toast.makeText(this, "Login with Facebook", Toast.LENGTH_SHORT).show()
+            }
+            1 -> {
+                Toast.makeText(this, "Login with Google", Toast.LENGTH_SHORT).show()
+            }
+            2 -> {
+                Toast.makeText(this, "Login with LinkedIn", Toast.LENGTH_SHORT).show()
+            }
+        }
+        return position
     }
 }
