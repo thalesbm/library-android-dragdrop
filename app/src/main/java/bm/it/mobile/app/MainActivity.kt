@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.AppCompatButton
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.appcompat.widget.LinearLayoutCompat
 import bm.it.mobile.library.DraggableView
@@ -22,7 +21,10 @@ class MainActivity : AppCompatActivity() {
 
         xml()
         code()
+        reset()
+    }
 
+    private fun reset() {
         val resetButton: Button = findViewById(R.id.button_reset)
         resetButton.setOnClickListener(object : View.OnClickListener{
             override fun onClick(p0: View?) {

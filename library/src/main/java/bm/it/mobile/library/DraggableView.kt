@@ -36,14 +36,13 @@ class DraggableView(private val callback: OnViewSelection) : View.OnTouchListene
 
     fun setDraggableView(view: View) {
         viewsArrayList.add(view)
-        viewsArrayList.forEach{
+        viewsArrayList.forEach {
             it.setOnTouchListener(this)
         }
     }
 
     fun reset() {
         dragSuccess = false
-//        viewsArrayList = ArrayList<View>()
 
         destViewGroups.forEach {
             val container = it as LinearLayoutCompat
@@ -58,14 +57,13 @@ class DraggableView(private val callback: OnViewSelection) : View.OnTouchListene
     }
 
     override fun onDrag(layoutView: View, dragEvent: DragEvent): Boolean {
-        val action = dragEvent.action
         val view = dragEvent.localState as View
-        when (action) {
+        when (dragEvent.action) {
             DragEvent.ACTION_DROP -> {
                 actionDrop(view, layoutView)
             }
             DragEvent.ACTION_DRAG_ENDED -> {
-                 actionDragEnded(view)
+                actionDragEnded(view)
             }
         }
         return true
@@ -89,7 +87,6 @@ class DraggableView(private val callback: OnViewSelection) : View.OnTouchListene
                 container.addView(view)
 
                 view.visibility = View.VISIBLE
-
                 view.setOnTouchListener(null)
                 owner.setOnDragListener(null)
 
