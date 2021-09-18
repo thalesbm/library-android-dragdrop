@@ -6,7 +6,6 @@ import android.view.MotionEvent
 import android.view.View
 import android.view.View.DragShadowBuilder
 import android.view.ViewGroup
-import android.widget.RelativeLayout
 import androidx.appcompat.widget.LinearLayoutCompat
 import java.util.*
 

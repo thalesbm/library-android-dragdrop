@@ -2,10 +2,9 @@ package bm.it.mobile.app
 
 import android.os.Bundle
 import android.view.View
-import android.widget.ImageView
-import android.widget.RelativeLayout
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.AppCompatImageView
+import androidx.appcompat.widget.LinearLayoutCompat
 import bm.it.mobile.library.DraggableView
 import bm.it.mobile.library.OnViewSelection
 
@@ -21,22 +20,22 @@ class MainActivity : AppCompatActivity(), OnViewSelection {
     }
 
     private fun getDestinations(): MutableList<View> {
-        val rlDestination: RelativeLayout = findViewById(R.id.rlDestination)
-        val rlDestination1: RelativeLayout = findViewById(R.id.rlDestination1)
-        val rlDestination2: RelativeLayout = findViewById(R.id.rlDestination2)
+        val destination: LinearLayoutCompat = findViewById(R.id.destination)
+        val destination1: LinearLayoutCompat = findViewById(R.id.destination1)
+        val destination2: LinearLayoutCompat = findViewById(R.id.destination2)
 
         val destinations = mutableListOf<View>()
-        destinations.add(rlDestination)
-        destinations.add(rlDestination1)
-        destinations.add(rlDestination2)
+        destinations.add(destination)
+        destinations.add(destination1)
+        destinations.add(destination2)
 
         return destinations
     }
 
     private fun getViews(): MutableList<View> {
-        val imgFacebook: ImageView = findViewById(R.id.imgFacebook)
-        val imgGoogle: ImageView = findViewById(R.id.imgGoogle)
-        val imgLinkedIn: ImageView = findViewById(R.id.imgLinkedIn)
+        val imgFacebook: AppCompatImageView = findViewById(R.id.imgFacebook)
+        val imgGoogle: AppCompatImageView = findViewById(R.id.imgGoogle)
+        val imgLinkedIn: AppCompatImageView = findViewById(R.id.imgLinkedIn)
 
         val views = mutableListOf<View>()
         views.add(imgFacebook)

@@ -3,12 +3,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@android:color/white"
     android:orientation="vertical"
     tools:context=".MainActivity">
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center"
         android:orientation="horizontal">
 
         <androidx.appcompat.widget.AppCompatImageView
@@ -35,25 +37,26 @@
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
         android:orientation="horizontal">
 
-        <RelativeLayout
-            android:id="@+id/rlDestination"
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/destination"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_margin="10dp"
             android:background="@color/colorPrimary" />
 
-        <RelativeLayout
-            android:id="@+id/rlDestination1"
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/destination1"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_margin="10dp"
             android:background="@color/colorPrimary" />
 
-        <RelativeLayout
-            android:id="@+id/rlDestination2"
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/destination2"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_margin="10dp"
