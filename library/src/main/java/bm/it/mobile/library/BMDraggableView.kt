@@ -72,7 +72,10 @@ open class BMDraggableView(private val callback: OnViewSelection) : View.OnTouch
             if (viewsArrayList[j].id == view.id) {
 
                 hashMapByPosition[destinationPosition] = j
-                hashMapByTag[destinationView.tag as String] = viewsArrayList[j].tag as String
+
+                if (destinationView.tag != null && viewsArrayList[j].tag != null) {
+                    hashMapByTag[destinationView.tag as String] = viewsArrayList[j].tag as String
+                }
             }
         }
     }
