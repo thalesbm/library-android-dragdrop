@@ -28,7 +28,7 @@ class DraggableView(private val callback: OnViewSelection) : BMDraggableView(cal
     }
 
     fun reset() {
-        hashMapByPosition = HashMap()
+        hashMapByTag = HashMap()
         destViewGroups.forEach {
             val container = it as LinearLayoutCompat
             container.removeAllViews()

@@ -18,7 +18,6 @@ open class BMDraggableView(private val callback: OnViewSelection) : View.OnTouch
     protected lateinit var destViewGroups: MutableList<View>
     protected lateinit var viewsArrayList: MutableList<View>
 
-    protected var hashMapByPosition: HashMap<Int, Int> = HashMap()
     protected var hashMapByTag: HashMap<String, String> = HashMap()
 
     protected fun setDestEvents() {
@@ -71,35 +70,22 @@ open class BMDraggableView(private val callback: OnViewSelection) : View.OnTouch
         for (j in viewsArrayList.indices) {
             if (viewsArrayList[j].id == view.id) {
 
-                hashMapByPosition[destinationPosition] = j
-
                 if (destinationView.tag != null && viewsArrayList[j].tag != null) {
                     hashMapByTag[destinationView.tag as String] = viewsArrayList[j].tag as String
+                    break
                 }
             }
         }
     }
 
     private fun logCallback() {
-        hashMapByPosition.forEach {
-            Log.d(TAG, "(POSITION) DESTINATION:" + it.key + " ITEM:" + it.value)
-        }
-
         hashMapByTag.forEach {
             Log.d(TAG, "(TAG) DESTINATION:" + it.key + " ITEM:" + it.value)
         }
     }
 
     private fun invokeCallback() {
-        if (hashMapByPosition.size == viewsArrayList.size &&
-            hashMapByPosition.size == destViewGroups.size) {
-            callback.viewSelectedByPosition(hashMapByPosition)
-        }
-
-        if (hashMapByTag.size == viewsArrayList.size &&
-            hashMapByTag.size == destViewGroups.size) {
-            callback.viewSelectedByTag(hashMapByTag)
-        }
+        callback.viewSelectedByTag(hashMapByTag)
     }
 
     @SuppressLint("ClickableViewAccessibility")

@@ -22,11 +22,7 @@ dependencies {
 ###### Step 1. Implement the interface OnViewSelection
 ```
 private val callback = object : OnViewSelection {
-    // for both methods, key is the destination and the value is the item
-    override fun viewSelectedByPosition(items: HashMap<Int, Int>) {
-        // returns the position
-    }
-
+    // key is the destination and the value is the item
     override fun viewSelectedByTag(items: HashMap<String, String>) {
         // if set tags to views, will return the tags
     }

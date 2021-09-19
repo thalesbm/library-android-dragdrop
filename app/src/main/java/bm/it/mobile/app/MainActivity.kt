@@ -93,11 +93,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     private val callback = object : OnViewSelection {
-        override fun viewSelectedByPosition(items: HashMap<Int, Int>) {
-            // key = destination
-            // value = item
-        }
-
         override fun viewSelectedByTag(items: HashMap<String, String>) {
             // key = destination
             // value = item
