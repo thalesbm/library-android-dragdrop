@@ -7,6 +7,7 @@ import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.appcompat.widget.LinearLayoutCompat
+import bm.it.mobile.library.BMDraggableView
 import bm.it.mobile.library.DraggableView
 import bm.it.mobile.library.OnViewSelection
 
@@ -69,6 +70,7 @@ class MainActivity : AppCompatActivity() {
             val image = AppCompatImageView(this)
             image.setBackgroundColor(Color.BLACK)
             image.layoutParams = customParams
+            image.tag = "item$i"
 
             itemsView.addView(image)
             views.add(image)
@@ -79,6 +81,7 @@ class MainActivity : AppCompatActivity() {
             val image = LinearLayoutCompat(this)
             image.setBackgroundColor(Color.YELLOW)
             image.layoutParams = customParams
+            image.tag = "destination$i"
 
             destinationsViews.addView(image)
             destinations.add(image)
@@ -90,8 +93,14 @@ class MainActivity : AppCompatActivity() {
     }
 
     private val callback = object : OnViewSelection {
-        override fun viewSelectedPosition(position: Int): Int {
-            return position
+        override fun viewSelectedByPosition(items: HashMap<Int, Int>) {
+            // key = destination
+            // value = item
+        }
+
+        override fun viewSelectedByTag(items: HashMap<String, String>) {
+            // key = destination
+            // value = item
         }
     }
 }

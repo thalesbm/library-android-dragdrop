@@ -14,7 +14,7 @@ allprojects {
 ###### Step 2. Add the dependency
 ```
 dependencies {
-    implementation 'com.github.thalesbm:library-android-dragdrop:1.0.6'
+    implementation 'com.github.thalesbm:library-android-dragdrop:1.1.0'
 }
 ```
 #### How to use?
@@ -22,8 +22,13 @@ dependencies {
 ###### Step 1. Implement the interface OnViewSelection
 ```
 private val callback = object : OnViewSelection {
-    override fun viewSelectedPosition(position: Int): Int {
-        return position
+    // for both methods, key is the destination and the value is the item
+    override fun viewSelectedByPosition(items: HashMap<Int, Int>) {
+        // returns the position
+    }
+
+    override fun viewSelectedByTag(items: HashMap<String, String>) {
+        // if set tags to views, will return the tags
     }
 }
 ```

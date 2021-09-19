@@ -2,5 +2,7 @@ package bm.it.mobile.library
 
 interface OnViewSelection {
 
-    fun viewSelectedPosition(position: Int): Int
+    fun viewSelectedByPosition(items: HashMap<Int, Int>)
+
+    fun viewSelectedByTag(items: HashMap<String, String>)
 }
