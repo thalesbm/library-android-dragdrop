@@ -17,6 +17,10 @@ dependencies {
     implementation 'com.github.thalesbm:library-android-dragdrop:1.1.1'
 }
 ```
+
+------
+
+
 #### How to use?
 
 ###### Step 1. Implement the interface OnViewSelection
