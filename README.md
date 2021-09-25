@@ -17,6 +17,10 @@ dependencies {
     implementation 'com.github.thalesbm:library-android-dragdrop:1.1.1'
 }
 ```
+
+------
+
+
 #### How to use?
 
 #### Demo
@@ -24,7 +28,7 @@ dependencies {
 ![](demo/demo.gif)
 
 ###### Step 1. Implement the interface OnViewSelection
-```
+```kotlin
 private val callback = object : OnViewSelection {
     // key is the destination and the value is the item
     override fun viewSelectedByTag(items: HashMap<String, String>) {
@@ -34,21 +38,21 @@ private val callback = object : OnViewSelection {
 ```
 
 ###### Step 2. Instance the object DraggableView
-```
+```kotlin
 val draggableView = DraggableView(callback)
 ```
 
 ###### Step 3. Set the destinations views
-```
+```kotlin
 draggableView.setDestView(...)
 ```
 
 ###### Step 4. Set the draggable views
-```
+```kotlin
 draggableView.setDraggableView(...)
 ```
 
 ###### Useful Methods
-```
+```kotlin
 draggableView.reset()
 ```
