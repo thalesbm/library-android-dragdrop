@@ -19,6 +19,10 @@ dependencies {
 ```
 #### How to use?
 
+#### Demo
+
+![](demo/demo.gif)
+
 ###### Step 1. Implement the interface OnViewSelection
 ```
 private val callback = object : OnViewSelection {
