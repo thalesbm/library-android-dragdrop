@@ -1,5 +1,9 @@
 # library-android-dragdrop
 
+#### Demo
+
+![](demo/demo.gif)
+
 #### Installation
 
 ###### Step 1. Add the JitPack repository to your build file
@@ -20,12 +24,7 @@ dependencies {
 
 ------
 
-
 #### How to use?
-
-#### Demo
-
-![](demo/demo.gif)
 
 ###### Step 1. Implement the interface OnViewSelection
 ```kotlin
