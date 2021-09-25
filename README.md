@@ -2,7 +2,7 @@
 
 #### Demo
 
-![](demo/demo.gif)
+![](demo/ezgif.com-gif-maker (1).gif)
 
 #### Installation
 
