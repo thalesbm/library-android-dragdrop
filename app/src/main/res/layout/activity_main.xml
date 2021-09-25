@@ -14,7 +14,7 @@
         <androidx.appcompat.widget.AppCompatTextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="XML"
+            android:text="VIA XML"
             android:textColor="@color/colorAccent"
             android:textSize="20sp" />
     </androidx.appcompat.widget.LinearLayoutCompat>
@@ -25,29 +25,29 @@
         android:gravity="center"
         android:orientation="horizontal">
 
-        <androidx.appcompat.widget.AppCompatImageView
+        <androidx.appcompat.widget.LinearLayoutCompat
             android:id="@+id/img1"
             android:tag="img0"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_margin="10dp"
-            android:background="@android:drawable/ic_delete" />
+            android:background="@android:color/black" />
 
-        <androidx.appcompat.widget.AppCompatImageView
+        <androidx.appcompat.widget.LinearLayoutCompat
             android:id="@+id/img2"
             android:tag="img1"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_margin="10dp"
-            android:background="@android:drawable/ic_input_add" />
+            android:background="@android:color/black" />
 
-        <androidx.appcompat.widget.AppCompatImageView
+        <androidx.appcompat.widget.LinearLayoutCompat
             android:id="@+id/img3"
             android:tag="img2"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_margin="10dp"
-            android:background="@android:drawable/ic_menu_help" />
+            android:background="@android:color/black" />
     </androidx.appcompat.widget.LinearLayoutCompat>
 
     <androidx.appcompat.widget.LinearLayoutCompat
@@ -88,7 +88,7 @@
         <androidx.appcompat.widget.AppCompatTextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="CODE"
+            android:text="VIA CODE"
             android:textColor="@color/colorAccent"
             android:textSize="20sp" />
     </androidx.appcompat.widget.LinearLayoutCompat>
@@ -106,17 +106,5 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:orientation="horizontal" />
-
-    <androidx.appcompat.widget.LinearLayoutCompat
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <Button
-            android:id="@+id/button_reset"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="RESET" />
-    </androidx.appcompat.widget.LinearLayoutCompat>
-
 
 </androidx.appcompat.widget.LinearLayoutCompat>

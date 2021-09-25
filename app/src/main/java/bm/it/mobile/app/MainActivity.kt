@@ -22,26 +22,15 @@ class MainActivity : AppCompatActivity() {
 
         xml()
         code()
-        reset()
-    }
-
-    private fun reset() {
-        val resetButton: Button = findViewById(R.id.button_reset)
-        resetButton.setOnClickListener(object : View.OnClickListener{
-            override fun onClick(p0: View?) {
-                draggableViewXML.reset()
-                draggableViewCode.reset()
-            }
-        })
     }
 
     private fun xml() {
         val destination1: LinearLayoutCompat = findViewById(R.id.destination1)
         val destination2: LinearLayoutCompat = findViewById(R.id.destination2)
         val destination3: LinearLayoutCompat = findViewById(R.id.destination3)
-        val img1: AppCompatImageView = findViewById(R.id.img1)
-        val img2: AppCompatImageView = findViewById(R.id.img2)
-        val img3: AppCompatImageView = findViewById(R.id.img3)
+        val img1: LinearLayoutCompat = findViewById(R.id.img1)
+        val img2: LinearLayoutCompat = findViewById(R.id.img2)
+        val img3: LinearLayoutCompat = findViewById(R.id.img3)
 
         val destinations = mutableListOf<View>()
         destinations.add(destination1)
