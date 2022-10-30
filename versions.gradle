@@ -1,9 +1,9 @@
 ext {
     // Android
     minSDKVersion = 19
-    targetSDKVersion = 30
-    compileSDKVersion = 30
-    kotlinVersion = '1.5.21'
-    gradleVersion = '3.6.4'
-    appCompactVersion = '1.3.1'
+    targetSDKVersion = 32
+    compileSDKVersion = 32
+    kotlinVersion = '1.7.10'
+    gradleVersion = '7.2.2'
+    appCompactVersion = '1.5.1'
 }
